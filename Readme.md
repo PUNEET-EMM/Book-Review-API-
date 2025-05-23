@@ -1,43 +1,47 @@
 # 📚 Book Review API
 
-A simple RESTful API built with **Node.js**, **Express**, and **MongoDB** for managing books and user reviews. Authenticated users can add books, write review book, and update or delete their own reviews.
+A simple and secure RESTful API built with **Node.js**, **Express**, and **MongoDB**, designed to manage books and user reviews. Authenticated users can add books, submit one review per book, and update or delete their own reviews.
 
 ---
 
 ## 🚀 Features
 
-* User authentication using **JWT**
-* Add, view, search books with optional filters
-* Leave one review per book (authenticated users only)
-* Update/delete your own review
+* 🔐 User authentication via **JWT**
+* 📘 CRUD operations for books
+* 🔍 Search and filter books by author or genre
+* ✍️ Add one review per book (authenticated users only)
+* ✏️ Update/Delete your own reviews
 
 ---
 
-## 🔧 Tech Stack
+## 🛠️ Tech Stack
 
-* Node.js
-* Express.js
-* MongoDB with Mongoose
-* JWT for authentication
+* **Node.js**
+* **Express.js**
+* **MongoDB** with **Mongoose**
+* **JWT** for authentication
 
 ---
 
+## ⚙️ Setup Instructions
 
-## Clone
+### 🔄 Clone the Repository
 
 ```bash
-git clone repo  https://github.com/PUNEET-EMM/Book-Review-API-.git
+git clone https://github.com/PUNEET-EMM/Book-Review-API-.git
+
+cd Book-Review-API-
 ```
 
-## 📦 Installation
+### 📆 Install Dependencies
 
 ```bash
 npm install
 ```
 
-### ⚙️ Environment Variables
+### 🧪 Configure Environment Variables
 
-Create a `.env` file in the root with the following:
+Create a `.env` file in the project root and add the following:
 
 ```env
 PORT=3000
@@ -45,43 +49,49 @@ MONGO_URI=mongodb://localhost:27017/bookreview
 JWT_SECRET=your_jwt_secret_key
 ```
 
+### ▶️ Run the Application
+
+```bash
+npm start
+```
+
 ---
 
 ## 📌 API Endpoints
 
-### 🧑 Auth
+### 🧑‍💻 Authentication
 
-| Method | Endpoint         | Description         |
-| ------ | ---------------- | ------------------- |
-| POST   | /api/v1/auth/signup | Register new user   |
-| POST   | /api/v1/auth/login  | Login and get token |
+| Method | Endpoint              | Description               |
+| ------ | --------------------- | ------------------------- |
+| POST   | `/api/v1/auth/signup` | Register a new user       |
+| POST   | `/api/v1/auth/login`  | Login and receive a token |
 
 ---
 
-### 📘 Books
+### 📚 Books
 
-| Method | Endpoint                 | Description                            |
-| ------ | ------------------------ | -------------------------------------- |
-| POST   | /api/v1/books               | Add new book (auth required)           |
-| GET    | /api/v1/books               | Get all books (filter by author/genre) |
-| GET    | /api/v1/books/:id          | Get book details w/ reviews            |
-| GET    | /api/v1/books/search?query= | Search books by title or author        |
+| Method | Endpoint                      | Description                         |
+| ------ | ----------------------------- | ----------------------------------- |
+| POST   | `/api/v1/books`               | Add a new book (auth required)      |
+| GET    | `/api/v1/books`               | Retrieve all books (filterable)     |
+| GET    | `/api/v1/books/:id`           | Get a specific book and its reviews |
+| GET    | `/api/v1/books/search?query=` | Search books by title or author     |
 
 ---
 
 ### ✍️ Reviews
 
-| Method | Endpoint                            | Description                     |
-| ------ | ----------------------------------- | ------------------------------- |
-| POST   | /api/v1/reviews/books/:bookId/reviews | Add review (auth, one per book) |
-| PUT    | /api/v1/reviews/:reviewId     | Update own review (auth)        |
-| DELETE | /api/v1/reviews/:reviewId     | Delete own review (auth)        |
+| Method | Endpoint                                | Description                          |
+| ------ | --------------------------------------- | ------------------------------------ |
+| POST   | `/api/v1/reviews/books/:bookId/reviews` | Submit a review (auth, one per book) |
+| PUT    | `/api/v1/reviews/:reviewId`             | Update your review (auth required)   |
+| DELETE | `/api/v1/reviews/:reviewId`             | Delete your review (auth required)   |
 
 ---
 
-## 🧪 Example Requests (with `curl`)
+## 🔍 Example Requests (via `curl`)
 
-### Signup
+### ✅ Register User
 
 ```bash
 curl -X POST http://localhost:3000/api/v1/auth/signup \
@@ -89,7 +99,7 @@ curl -X POST http://localhost:3000/api/v1/auth/signup \
 -d '{"username": "john", "password": "secret"}'
 ```
 
-### Add a Book
+### 📕 Add a Book
 
 ```bash
 curl -X POST http://localhost:3000/api/v1/books \
@@ -98,7 +108,7 @@ curl -X POST http://localhost:3000/api/v1/books \
 -d '{"title": "Clean Code", "author": "Robert Martin", "genre": "Programming"}'
 ```
 
-### Submit Review
+### ⭐ Submit a Review
 
 ```bash
 curl -X POST http://localhost:3000/api/v1/reviews/books/BOOK_ID/reviews \
@@ -108,6 +118,12 @@ curl -X POST http://localhost:3000/api/v1/reviews/books/BOOK_ID/reviews \
 ```
 
 ---
+
+
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
 
 
 
