@@ -119,6 +119,33 @@ curl -X POST http://localhost:3000/api/v1/reviews/books/BOOK_ID/reviews \
 
 ---
 
+## 🧱 Database Schema
+
+### User
+
+```js
+username: String (unique)
+password: String (hashed)
+```
+
+### Book
+
+```js
+title: String
+author: String
+genre: String
+reviews: [ObjectId] (refs to Review)
+```
+
+### Review
+
+```js
+user: ObjectId (ref to User)
+book: ObjectId (ref to Book)
+rating: Number (1-5)
+comment: String
+```
+
 
 
 ## 📄 License
