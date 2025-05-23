@@ -26,7 +26,7 @@ A simple RESTful API built with **Node.js**, **Express**, and **MongoDB** for ma
 ## Clone
 
 ```bash
-git clone repo name
+git clone repo  https://github.com/PUNEET-EMM/Book-Review-API-.git
 ```
 
 ## 📦 Installation
@@ -84,7 +84,7 @@ JWT_SECRET=your_jwt_secret_key
 ### Signup
 
 ```bash
-curl -X POST http://localhost:3000/api/auth/signup \
+curl -X POST http://localhost:3000/api/v1/auth/signup \
 -H "Content-Type: application/json" \
 -d '{"username": "john", "password": "secret"}'
 ```
@@ -92,7 +92,7 @@ curl -X POST http://localhost:3000/api/auth/signup \
 ### Add a Book
 
 ```bash
-curl -X POST http://localhost:3000/api/books \
+curl -X POST http://localhost:3000/api/v1/books \
 -H "Authorization: Bearer YOUR_TOKEN" \
 -H "Content-Type: application/json" \
 -d '{"title": "Clean Code", "author": "Robert Martin", "genre": "Programming"}'
@@ -101,7 +101,7 @@ curl -X POST http://localhost:3000/api/books \
 ### Submit Review
 
 ```bash
-curl -X POST http://localhost:3000/api/reviews/books/BOOK_ID/reviews \
+curl -X POST http://localhost:3000/api/v1/reviews/books/BOOK_ID/reviews \
 -H "Authorization: Bearer YOUR_TOKEN" \
 -H "Content-Type: application/json" \
 -d '{"rating": 5, "comment": "Must read!"}'
@@ -109,33 +109,9 @@ curl -X POST http://localhost:3000/api/reviews/books/BOOK_ID/reviews \
 
 ---
 
-## 🧱 Sample MongoDB Schema
 
-### User
 
-```js
-username: String (unique)
-password: String (hashed)
-```
 
-### Book
 
-```js
-title: String
-author: String
-genre: String
-reviews: [ObjectId] (refs to Review)
-```
-
-### Review
-
-```js
-user: ObjectId (ref to User)
-book: ObjectId (ref to Book)
-rating: Number (1-5)
-comment: String
-```
-
----
 
 
